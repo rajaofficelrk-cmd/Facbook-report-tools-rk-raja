@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-# Install essential system dependencies & cleanup cache
+# Install system dependencies & Chrome prerequisites
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     gnupg \
@@ -28,15 +28,11 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --d
     && apt-get update && apt-get install -y --no-install-recommends google-chrome-stable \
     && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
 WORKDIR /app
 
-# Copy requirements and install python packages
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project files
 COPY . .
 
-# Command to run script
 CMD ["python", "reporter.py"]
