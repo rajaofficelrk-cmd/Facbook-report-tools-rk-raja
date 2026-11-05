@@ -28,7 +28,7 @@ def report_account(driver, profile_url, count):
             wait = WebDriverWait(driver, 15)
             time.sleep(3)
             
-            # Reporting logic steps...
+            # Reporting logic simulation / actions
             print(f"🔄 Processing report action...")
             time.sleep(random.uniform(2.0, 4.0))
             
@@ -47,12 +47,11 @@ def report_account(driver, profile_url, count):
             time.sleep(delay)
 
 if __name__ == "__main__":
-    # Render par input() kaam nahi karta kyunki wahan interactive terminal nahi hota.
-    # Isliye environment variables ya default values use ki jaati hain.
-    profile_url = "https://www.facebook.com/example_profile" # Yahan target URL dalein
-    report_count = 5                                         # Reports ki sankhya
+    # Render ke liye default target values
+    profile_url = "https://www.facebook.com/example_profile"
+    report_count = 5
     
-    # Render Headless Chrome Configuration
+    # Headless Chrome Configuration for Cloud (Render)
     options = Options()
     options.add_argument("--headless=new")
     options.add_argument("--no-sandbox")
